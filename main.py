@@ -2,7 +2,7 @@ from PyQt4 import QtGui
 import sys
 # import design
 import numpy as np
-from emulator import Emulator
+from emulator import FreematicsEmulator
 
 """
 class ExampleApp(QtGui.QMainWindow, design.Ui_MainWindow):
@@ -26,7 +26,7 @@ def main():
 if __name__ == '__main__':
     import time
 
-    e = Emulator()
+    e = FreematicsEmulator()
     e.connect()
     e.clear_dtc()
 
@@ -34,20 +34,20 @@ if __name__ == '__main__':
     e.set_vin("4" * 17)
     # print("VIN IS SET")
     # e.get_vin()
-    e.set_pid("010C", "256")  # RPM
+    e.set_pid("010C", (0x31,0x64))  # RPM
     print(e.get_pid("010C"))
     e.set_pid("010C", "1026")  # RPM
     print(e.get_pid("010C"))
-    # print("Determining Active PIDs")
-    #
-    # print(e.get_pid("0100"))
-    # print(e.get_pid("0120"))
-    # print(e.get_pid("0140"))
-    # print(e.get_pid("0160"))
-    # print(e.get_pid("0180"))
-    # print(e.get_pid("01A0"))
-    # print(e.get_pid("01C0"))
-    # print(e.get_pid("0900"))
+    print("Determining Active PIDs")
+
+    print(e.get_pid("0100"))
+    print(e.get_pid("0120"))
+    print(e.get_pid("0140"))
+    print(e.get_pid("0160"))
+    print(e.get_pid("0180"))
+    print(e.get_pid("01A0"))
+    print(e.get_pid("01C0"))
+    print(e.get_pid("0900"))
     # e.set_pid("010D", "100")  # speed
     # e.set_pid("0105", "85")  # Coolant temp
     #

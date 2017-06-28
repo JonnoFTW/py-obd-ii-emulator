@@ -3,7 +3,7 @@ import serial.tools.list_ports
 import struct
 
 
-class Emulator:
+class FreematicsEmulator:
     def __init__(self, verbose=True):
         self.verbose = verbose
 
@@ -75,9 +75,10 @@ class Emulator:
         Response: The raw HEX data of the requested OBD-II PID
 
         """
-        out = self.sendCMD("ATGET {}".format(pid)).split('=')[1].replace(' ', '')
-
-        return int(out, 16)
+        out = self.sendCMD("ATGET {}".format(pid)).split('=')[1]
+        if out:
+            return int(out, 16)
+        return "ERR"
 
     def reinitialize(self):
         """
